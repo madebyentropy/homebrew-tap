@@ -5,7 +5,7 @@ Homebrew tap for `tnl`.
 ### Install
 
 ```sh
-brew install tnldotdev/tap/tnl
+brew install madebyentropy/tap/tnl
 ```
 
 ### Upgrade

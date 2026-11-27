@@ -1,35 +1,38 @@
 class Tnl < Formula
-  desc "take a shortcut through the internet."
-  homepage "https://github.com/tnldotdev/tnl"
-  version "0.1.0-rc.5"
-  license "MIT"
+  desc "tunnels for local apps and private services."
+  homepage "https://github.com/madebyentropy/tnl"
+  version "0.1.0-rc.50"
+  license "BSD-3-Clause"
 
   on_macos do
     on_arm do
-      url "https://github.com/tnldotdev/tnl/releases/download/v0.1.0-rc.5/tnl_0.1.0-rc.5_darwin_arm64.tar.gz"
-      sha256 "4d70750acb6dbf6a9ca3bc8ac2b50544ca130da710b497dd10b22019f27457ee"
+      url "https://github.com/madebyentropy/tnl/releases/download/v0.1.0-rc.50/tnl_0.1.0-rc.50_darwin_arm64.tar.gz"
+      sha256 "a717e9e70f047e25a7a6b8ae4053e01a88d960a025921081b0bd2dfb0a82f3ef"
     end
 
     on_intel do
-      url "https://github.com/tnldotdev/tnl/releases/download/v0.1.0-rc.5/tnl_0.1.0-rc.5_darwin_amd64.tar.gz"
-      sha256 "69b848e97a8463edd45bd417ad7c629478b9c2a65499c4a6371de6178ad156c3"
+      url "https://github.com/madebyentropy/tnl/releases/download/v0.1.0-rc.50/tnl_0.1.0-rc.50_darwin_amd64.tar.gz"
+      sha256 "47f21c55f8a07801f39e1a3acfd7d9d6efda953b94f7ae8bd612bad57c813421"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/tnldotdev/tnl/releases/download/v0.1.0-rc.5/tnl_0.1.0-rc.5_linux_arm64.tar.gz"
-      sha256 "daccc8090e075f7de775150c5c5d4eecfb2ab6bb6e9cdcb4af71718db2d1ce39"
+      url "https://github.com/madebyentropy/tnl/releases/download/v0.1.0-rc.50/tnl_0.1.0-rc.50_linux_arm64.tar.gz"
+      sha256 "57830f385b05a9deeea71fa4bd400b01c2fbb356a4e039809da4a9503082fd03"
     end
 
     on_intel do
-      url "https://github.com/tnldotdev/tnl/releases/download/v0.1.0-rc.5/tnl_0.1.0-rc.5_linux_amd64.tar.gz"
-      sha256 "9a13754c7238a18c5d1583572c928d8b421150c772c30c5f32b0a05f71a6d8ab"
+      url "https://github.com/madebyentropy/tnl/releases/download/v0.1.0-rc.50/tnl_0.1.0-rc.50_linux_amd64.tar.gz"
+      sha256 "3e8e7f3b236d08ffa13b9e725889f37f516964d0c1decaf4486ab2b9c7d6b6d2"
     end
   end
 
   def install
     bin.install "tnl", "tnld"
+    %w[tnl tnld].each do |name|
+      generate_completions_from_executable(bin/name, "completion", shells: [:bash, :zsh, :fish])
+    end
   end
 
   test do
